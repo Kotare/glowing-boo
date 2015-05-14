@@ -1,6 +1,8 @@
 function B() {
 	this.name = 'flim';
 	this.shell = '<div id="' + this.name + '""></div>';
+	this.id = '#' + this.name;
+	this.lastCoords = this.getCoords();
 };
 
 B.prototype.start = function() { // 
