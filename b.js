@@ -38,13 +38,15 @@ B.prototype.newCoords = function(args) { // Abstract to helper?
 	var newCoords;
 	if (args.coords.prev === undefined) {
 		newCoords = locationBasedNextCoords(args)
-	} else if {
+	} else {
 		newCoords = vectorBasedNextCoords(args)
 	}
 	return newCoords
 }
 
 B.prototype.locationBasedNextCoords = function(args) {
+	var xNew = args.currentCoords.xNow + (Math.random() * args.percentScreenMove - args.percentScreenMove/2);
+	var yNew = args.currentCoords.yNow + (Math.random() * args.percentScreenMove - args.percentScreenMove/2);
 	return {x: xNew, y: yNew};
 }
 
