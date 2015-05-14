@@ -11,10 +11,10 @@ $(document).ready( function() {
   $aShell.appendTo('#world');
   a.start();
 
-  var b = new A('b');
-  var $bShell = $(b.shell)
-  $bShell.css({top: "40%", left: "40%"});
-  $bShell.appendTo('#world');
-  b.start();
+  // var b = new A('b');
+  // var $bShell = $(b.shell)
+  // $bShell.css({top: "40%", left: "40%"});
+  // $bShell.appendTo('#world');
+  // b.start();
 
 })
