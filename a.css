@@ -7,9 +7,9 @@
 
 #creature {
   background: yellow;
-  height: 30px;
-  width: 30px;
-  border-radius: 30px;
+  height: 5%;
+  width: 5%;
+  border-radius: 50%;
   position: relative;
 
 }

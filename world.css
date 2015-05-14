@@ -1,4 +1,4 @@
-body, 
+body,
 #world {
 	height: 100%;
 	width: 100%;
@@ -9,4 +9,12 @@ body,
 	height: 10em;
 	width: 1em;
 	background: blue;
+}
+
+.creature {
+  background: blue;
+  height: 5%;
+  width: 5%;
+  border-radius: 50%;
+  position: absolute;
 }
