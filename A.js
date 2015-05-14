@@ -6,14 +6,19 @@ function A(name) {
 
 A.prototype.start = function() {
 
-  // go to work
-  this.cleanUpRoom();
+  
+ 
+  //go to work
+  // this.cleanUpRoom();
 
-  // exercise
-  this.goJogging();
+  // // exercise
+  // this.goJogging();
 
-  // bounce
-  this.bounceAround();
+  // // bounce
+  // this.bounceAround();
+  this.moveToCenter();
+  this.emphasizeBreath();
+  // this.emphasizeBreath();
 
   //play
   //$('#' + this.name).animate({top: coords.y + '3%', left: coords.x + '%'}, speed, 'linear');
@@ -40,6 +45,7 @@ A.prototype.cleanUpRoom = function() {
     if (i < 9) {
       //move one step right
       this.moveOneStepRight();
+
     }
   }
 }
@@ -69,6 +75,10 @@ A.prototype.bounceAround = function() {
 
 A.prototype.moveToUpperLeftCorner = function() {
   this.animateTo({x: 0, y: 0}, 2000);
+}
+
+A.prototype.moveToCenter = function() {
+  this.animateTo({x: 50, y:50}, 1500)
 }
 
 A.prototype.moveStraightDown = function() {
@@ -104,3 +114,17 @@ A.prototype.getPositionInPercent = function() {
 A.prototype.animateTo = function(coords, speed) { // {x: 10, y:12}
   $('#' + this.name).animate({top: coords.y + '%', left: coords.x + '%'}, speed, 'linear');
 }
+
+
+A.prototype.emphasizeBreath = function() {
+  $('#' + this.name).animate({height: '+=30%', width: '+=30%'},1000);
+  $('#' + this.name).animate({height: '-=20%', width: '-=20%'},1000);
+  $('#' + this.name).animate({height: '+=20%', width: '+=20%'},2000);
+  $('#' + this.name).animate({height: '-=30%', width: '-=30%'},3000);
+  $('#' + this.name).animate({height: '+=10%', width: '+=10%'},3000);
+  $('#' + this.name).animate({height: '-=10%', width: '-=10%'},4000);
+  $('#' + this.name).animate({height: '+=.5%', width: '+=.5%'},4000);
+  $('#' + this.name).animate({height: '-=.5%', width: '-=.5%'},5000);
+
+  }
+
