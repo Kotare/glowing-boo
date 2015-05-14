@@ -1,0 +1,12 @@
+body, 
+#world {
+	height: 100%;
+	width: 100%;
+}
+
+#flim {
+	position: absolute;
+	height: 10em;
+	width: 1em;
+	background: blue;
+}
