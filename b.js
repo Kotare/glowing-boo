@@ -11,11 +11,13 @@ B.prototype.start = function() { //
 }
 		
 B.prototype.move = function() {
-	console.log('move')
+	// console.log('move')
 	var lastCoords = this.lastCoords;
 	var currentCoords = this.getCoords();
-	var newCoords = this.newCoords({now: 	currentCoords,
-															prev: lastCoords});
+	var newCoords = this.newCoords({coords: {	now: 	currentCoords,
+																						prev: lastCoords},
+																	percentScreenMove: 3,
+																	bearingMaxVariation: Math.PI/2});
 	var timeToReach = Math.random() * 5000 + 1000
 	this.animateTo(newCoords, timeToReach);
 	this.lastCoords = currentCoords;
@@ -27,14 +29,12 @@ B.prototype.getCoords = function() {
 	return { x: xNow, y: yNow }
 }
 
-B.prototype.newCoords = function(coords) {
-	console.log('coords')
-	var moveStepPercent = 3 
-	var currentBearing = Math.atan((coords.prev.x - coords.now.x)/
-													 	(coords.prev.y - coords.now.y));
-	var newBearing = currentBearing + Math.random() * 45;
-	var xNew = moveStepPercent * Math.sin(newBearing);
-	var yNew = moveStepPercent * Math.cos(newBearing);
+B.prototype.newCoords = function(args) {
+	var currentBearing = Math.atan((args.coords.prev.x - args.coords.now.x)/
+													 	(args.coords.prev.y - args.coords.now.y));
+	var newBearing = currentBearing + Math.random() * args.bearingMaxVariation;
+	var xNew = args.percentScreenMove * Math.sin(newBearing);
+	var yNew = args.percentScreenMove * Math.cos(newBearing);
 	return {x: xNew, y: yNew}
 }
 

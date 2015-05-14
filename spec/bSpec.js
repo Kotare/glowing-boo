@@ -20,4 +20,11 @@ describe('B()', function() {
 
 		})
 	});
+	
+	describe("newCoords()", function() {
+		it('', function(){
+
+		})
+	});
+
 });
