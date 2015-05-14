@@ -39,5 +39,5 @@ B.prototype.newCoords = function(coords) {
 }
 
 B.prototype.animateTo = function(coords, speed) { // {x: 10, y:12}
-	$('#' + this.name).animate({top: coords.y + '%', left: coords.x + '%'}, speed)
+	$(this.id).animate({top: coords.y + '%', left: coords.x + '%'}, speed)
 }
