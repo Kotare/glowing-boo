@@ -5,4 +5,3 @@ $(document).ready( function() {
 	$bShell.appendTo('#world');
 	b.start()
 })
-
