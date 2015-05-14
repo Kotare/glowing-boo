@@ -27,8 +27,15 @@ B.prototype.getCoords = function() {
 	return { x: xNow, y: yNow }
 }
 
-		this.animateTo({x: 1, y: 1}, 2000)
-	// 
+B.prototype.newCoords = function(coords) {
+	console.log('coords')
+	var moveStepPercent = 3 
+	var currentBearing = Math.atan((coords.prev.x - coords.now.x)/
+													 	(coords.prev.y - coords.now.y));
+	var newBearing = currentBearing + Math.random() * 45;
+	var xNew = moveStepPercent * Math.sin(newBearing);
+	var yNew = moveStepPercent * Math.cos(newBearing);
+	return {x: xNew, y: yNew}
 }
 
 B.prototype.animateTo = function(coords, speed) { // {x: 10, y:12}
