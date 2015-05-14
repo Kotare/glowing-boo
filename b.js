@@ -6,12 +6,26 @@ function B() {
 };
 
 B.prototype.start = function() { // 
-	// loop
-		if 
-			mover(7)
-		else
-			balska()
-		end
+	setInterval(this.move.bind(this), 100)
+	// setInterval(this.poop.bind(this), 150)
+}
+		
+B.prototype.move = function() {
+	console.log('move')
+	var lastCoords = this.lastCoords;
+	var currentCoords = this.getCoords();
+	var newCoords = this.newCoords({now: 	currentCoords,
+															prev: lastCoords});
+	var timeToReach = Math.random() * 5000 + 1000
+	this.animateTo(newCoords, timeToReach);
+	this.lastCoords = currentCoords;
+}
+
+B.prototype.getCoords = function() {
+	var xNow = parseInt($(this.id).css('left'));
+	var yNow = parseInt($(this.id).css('top'));
+	return { x: xNow, y: yNow }
+}
 
 		this.animateTo({x: 1, y: 1}, 2000)
 	// 
