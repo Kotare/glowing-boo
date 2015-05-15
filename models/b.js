@@ -1,6 +1,6 @@
 function B(name, coords) {
 	this.name = name;
-	this.class = 'creature';
+	this.class = 'crature';
 	this.coords = coords;
 	this.lastCoords;
 	this.shell = '<div id="' + this.name + '" class="' + this.class + '"></div>';
