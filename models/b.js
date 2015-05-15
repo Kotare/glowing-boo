@@ -1,36 +1,57 @@
-function B() {
-	this.name = 'flim';
-	this.shell = '<div id="' + this.name + '""></div>';
+function B(name) {
+	this.name = name;
+	this.class = 'creature';
+	this.shell = '<div id="' + this.name + '" class="' + creature + '"></div>';
 	this.id = '#' + this.name;
 	this.lastCoords;
+	this.coords;
+	this.proximities = {}; // {creature: 5%, poop: 20%} 
+	this.moving;
+	// this.pooping;
 };
 
-// game loop
-B.prototype.start = function() { // 
-	// this.lastCoords = this.getCoords();
-	setInterval(this.move.bind(this), 100)
-	// setInterval(this.poop.bind(this), 150)
+B.prototype.behaviour = function() {
+	setInterval(function() {
+		if (proximity.a < 5) { //collision - behavioural knowledge
+			this.stopMovingAbout();
+			// this.struggle();
+		} else {
+			// this.stopStruggling();
+			this.moveAbout();
+		} 
+		if (proximity.poop < 10) {
+			this.moveAbout();
+		}
+	}, 100)
 }
 
-//
+B.prototype.moveAbout = function() {
+	this.moving = setInterval(this.move.bind(this), 100)
+	// this.pooping = setInterval(this.poop.bind(this), 150)
+}
+B.prototype.stopMovingAbout = function() {
+	clearInterval(this.moving)
+	// clearInterval(this.pooping)
+}
+
+// B.prototype.struggle = function() {
+// 	// this.struggling = setInterval(this.shake.bind(this), 100)
+// }
+
+// B.prototype.stopStruggling = function() {
+// 	// clearInterval(this.struggling)
+// }
+
 B.prototype.move = function() { // Abstract to helper?
 	console.log('move')
 	var lastCoords = this.lastCoords;
-	var currentCoords = this.getCoords();  // function query (DOM)
-	var newCoords = this.newCoords({coords: {	now: 	currentCoords,
+	var newCoords = this.newCoords({coords: {	now: 	this.coords,
 																						prev: lastCoords},
 																	percentScreenMove: 3,
 																	bearingMaxVariation: Math.PI/2}); //function
 	var timeToReach = Math.random() * 5000 + 1000
 	this.animateTo(newCoords, timeToReach); // function
 	this.lastCoords = currentCoords;
-}
-
-// DOM coupled
-B.prototype.getCoords = function() { // Abstract to helper?
-	var xNow = parseInt($(this.id).css('left'));
-	var yNow = parseInt($(this.id).css('top'));
-	return { x: xNow, y: yNow }
 }
 
 // Uncoupled
@@ -57,9 +78,4 @@ B.prototype.vectorBasedNextCoords = function(args) {
 	var xNew = args.percentScreenMove * Math.sin(newBearing);
 	var yNew = args.percentScreenMove * Math.cos(newBearing);
 	return {x: xNew, y: yNew};
-}
-
-// DOM coupled
-B.prototype.animateTo = function(coords, speed) { // Abstract to helper?
-	$(this.id).animate({top: coords.y + '%', left: coords.x + '%'}, speed)
 }
