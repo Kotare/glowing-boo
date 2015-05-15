@@ -1,5 +1,6 @@
 function World() {
 	var b1 = new B('flim');
+	var bView = new BView();
 	var b2 = new B('flam');
 	var allCreatures = [];
 	var allPoops = [];
@@ -10,12 +11,14 @@ function World() {
 	$bShell.appendTo('#world');
 
 	setInterval(function() {
-		bCreatureProximity = senses.nearestProximityToClass(allCreatures, b)
-		bPpoopProximity = senses.closestOfClass(allPoops, b)
-		b.proximities = {creature: 5%, poop: 20%} 
-		// aCreatureProximity = senses.nearestProximityToClass(allCreatures, a.id)
-		// aPpoopProximity = senses.closestOfClass('creature', a.id)
-		// a.proximities = {creature: 5%, poop: 20%} 
+		// bCreatureProximity = senses.nearestProximityToClass(allCreatures, b)
+		// bPpoopProximity = senses.closestOfClass(allPoops, b)
+		// b.proximities = {creature: 5%, poop: 20%} 
+		// // aCreatureProximity = senses.nearestProximityToClass(allCreatures, a.id)
+		// // aPpoopProximity = senses.closestOfClass('creature', a.id)
+		// // a.proximities = {creature: 5%, poop: 20%} 
+		b1.moveAbout();
+		// b2.moveAbout();
 	}, 100)
 }
 

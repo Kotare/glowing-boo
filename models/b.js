@@ -1,7 +1,7 @@
 function B(name) {
 	this.name = name;
 	this.class = 'creature';
-	this.shell = '<div id="' + this.name + '" class="' + creature + '"></div>';
+	this.shell = '<div id="' + this.name + '" class="' + this.class + '"></div>';
 	this.id = '#' + this.name;
 	this.lastCoords;
 	this.coords;
@@ -10,20 +10,20 @@ function B(name) {
 	// this.pooping;
 };
 
-B.prototype.behaviour = function() {
-	setInterval(function() {
-		if (proximity.a < 5) { //collision - behavioural knowledge
-			this.stopMovingAbout();
-			// this.struggle();
-		} else {
-			// this.stopStruggling();
-			this.moveAbout();
-		} 
-		if (proximity.poop < 10) {
-			this.moveAbout();
-		}
-	}, 100)
-}
+// B.prototype.behaviour = function() {
+	// setInterval(function() {
+		// if (proximity.a < 5) { //collision - behavioural knowledge
+		// 	this.stopMovingAbout();
+		// 	// this.struggle();
+		// } else {
+		// 	// this.stopStruggling();
+		// 	this.moveAbout();
+		// } 
+		// if (proximity.poop < 10) {
+		// 	this.moveAbout();
+		// }
+	// }, 100)
+// }
 
 B.prototype.moveAbout = function() {
 	this.moving = setInterval(this.move.bind(this), 100)
@@ -44,13 +44,14 @@ B.prototype.stopMovingAbout = function() {
 
 B.prototype.move = function() { // Abstract to helper?
 	console.log('move')
-	var lastCoords = this.lastCoords;
 	var newCoords = this.newCoords({coords: {	now: 	this.coords,
-																						prev: lastCoords},
+																						prev: this.lastCoords},
 																	percentScreenMove: 3,
 																	bearingMaxVariation: Math.PI/2}); //function
 	var timeToReach = Math.random() * 5000 + 1000
-	this.animateTo(newCoords, timeToReach); // function
+
+	bView.animateTo(newCoords, timeToReach); // bView Here? knowledge of? ?? ????????????????????????????????
+	
 	this.lastCoords = currentCoords;
 }
 
