@@ -48,8 +48,8 @@ B.prototype.move = function() { // Abstract to helper?
 	var newCoords = this.newCoords({coords: {	now: 	this.coords,
 																						prev: this.lastCoords},
 																	percentScreenMove: 3,
-																	bearingMaxVariation: Math.PI/2}); //function
-	var timeToReach = Math.random() * 5000 + 1000
+																	bearingMaxVariation: Math.PI/10}); //function
+	var timeToReach = Math.random() * 1000 + 1000
 
 	this.view.animateTo(this.id, newCoords, timeToReach); // bView Here? knowledge of? ?? ????????????????????????????????
 	this.lastCoords = this.coords;

@@ -7,6 +7,7 @@ body,
 #flim {
 	position: absolute;
 	height: 10em;
-	width: 1em;
-	background: blue;
+	width: 10em;
+	background: url('https://encrypted-tbn1.gstatic.com/images?q=tbn:ANd9GcTq5Yqt_XjGBkiHeOSv2LPSyyDCP37od092BxbpUCPkRrHqFG5i2A') no-repeat;
+	background-size: 100%;
 }
