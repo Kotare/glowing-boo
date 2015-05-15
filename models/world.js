@@ -1,6 +1,6 @@
 function World() {
-	var b1 = new B('flim');
 	var bView = new BView();
+	var b1 = new B('flim', {x:20, y:20});
 	var b2 = new B('flam');
 	var allCreatures = [];
 	var allPoops = [];
@@ -19,6 +19,6 @@ function World() {
 		// // a.proximities = {creature: 5%, poop: 20%} 
 		b1.moveAbout();
 		// b2.moveAbout();
-	}, 100)
+	}, 500)
 }
 

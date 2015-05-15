@@ -1,12 +1,13 @@
-function B(name) {
+function B(name, coords) {
 	this.name = name;
 	this.class = 'creature';
+	this.coords = coords;
+	this.lastCoords;
 	this.shell = '<div id="' + this.name + '" class="' + this.class + '"></div>';
 	this.id = '#' + this.name;
-	this.lastCoords;
-	this.coords;
 	this.proximities = {}; // {creature: 5%, poop: 20%} 
 	this.moving;
+	this.view = new BView()
 	// this.pooping;
 };
 
@@ -26,7 +27,7 @@ function B(name) {
 // }
 
 B.prototype.moveAbout = function() {
-	this.moving = setInterval(this.move.bind(this), 100)
+	this.moving = setInterval(this.move.bind(this), 500)
 	// this.pooping = setInterval(this.poop.bind(this), 150)
 }
 B.prototype.stopMovingAbout = function() {
@@ -50,25 +51,25 @@ B.prototype.move = function() { // Abstract to helper?
 																	bearingMaxVariation: Math.PI/2}); //function
 	var timeToReach = Math.random() * 5000 + 1000
 
-	bView.animateTo(this.id, newCoords, timeToReach); // bView Here? knowledge of? ?? ????????????????????????????????
-	
-	this.lastCoords = currentCoords;
+	this.view.animateTo(this.id, newCoords, timeToReach); // bView Here? knowledge of? ?? ????????????????????????????????
+	this.lastCoords = this.coords;
+	this.coords = newCoords;
 }
 
 // Uncoupled
 B.prototype.newCoords = function(args) { // Abstract to helper?
 	var newCoords;
 	if (args.coords.prev === undefined) {
-		newCoords = locationBasedNextCoords(args)
+		newCoords = this.locationBasedNextCoords(args)
 	} else {
-		newCoords = vectorBasedNextCoords(args)
+		newCoords = this.vectorBasedNextCoords(args)
 	}
 	return newCoords
 }
 
 B.prototype.locationBasedNextCoords = function(args) {
-	var xNew = args.currentCoords.xNow + (Math.random() * args.percentScreenMove - args.percentScreenMove/2);
-	var yNew = args.currentCoords.yNow + (Math.random() * args.percentScreenMove - args.percentScreenMove/2);
+	var xNew = args.coords.now.x + (Math.random() * args.percentScreenMove - args.percentScreenMove/2);
+	var yNew = args.coords.now.y + (Math.random() * args.percentScreenMove - args.percentScreenMove/2);
 	return {x: xNew, y: yNew};
 }
 
