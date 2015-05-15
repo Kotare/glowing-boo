@@ -6,9 +6,9 @@ function World() {
 	var allPoops = [];
 	allCreatures.push[b1];
 	allCreatures.push[b2];
-	var $bShell = $(b.shell);
-	$bShell.css({top: "20%", left: "20%"});
-	$bShell.appendTo('#world');
+	var $b1Shell = $(b1.shell);
+	$b1Shell.css({top: "20%", left: "20%"});
+	$b1Shell.appendTo('#world');
 
 	setInterval(function() {
 		// bCreatureProximity = senses.nearestProximityToClass(allCreatures, b)
